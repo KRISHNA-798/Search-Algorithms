@@ -12,40 +12,40 @@ CODE:
 A) Here the array is given sorted.( I do this for more practice :) )
 
 import java.util.*;
-public class binarysearch
+class binarysearch
 {
-	static int search(int arr[] , int key, int start, int end)
-	{
-		while(start <= end)
-		{
-		int mid = end + (start - end)/2 ;
-		if(arr[mid] == key)
-			return mid;
-		else if(key < arr[mid])
-			return search(arr , key , start , mid-1);
-		else if(key > arr[mid])
-			return search(arr , key , mid+1 , end);
-		}
-		return -1;
-	}
-	public static void main(String args[])
-	{
-		Scanner s = new Scanner(System.in);
-		System.out.println("Enter the length of array :");
-		int len = s.nextInt();
-		int arr[] = new int[len];
-		System.out.println("Enter the srray elements :");
-		for(int i = 0; i < len; i++)
-		{
-			arr[i] = s.nextInt();
-		}
-		System.out.println("Enter the key element ");
-		int key = s.nextInt();
-		int start = 0;
-		int end = len - 1;
-		int res = search(arr,key,start,end);
-		System.out.println("The position of key in array is :" + res);
-	}
+	public int search(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length - 1;
+        while(low <= high){
+            int mid = low + (high - low) / 2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            else if(nums[mid] < target){
+                low = mid + 1;
+            }
+            else{
+                high = mid - 1;
+            }
+        }
+        return -1;
+
+    }
+    public static void main(String args[])
+    {
+        Scanner s = new Scanner(System.in);
+        int len = s.nextInt();
+        int nums[] = new int[len];
+        for(int i  = 0; i < len; i++)
+        {
+            nums[i] = s.nextInt();
+        }
+        int target = s.nextInt();
+        binarysearch s1 = new bianrysearch();
+        int res = s1.search(nums , target);
+        System.out.println(res);
+    }
 }
 
 B) Here the array need's to be sorted and then search is applied.
